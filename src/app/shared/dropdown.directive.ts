@@ -1,25 +1,25 @@
-import { Directive, HostListener, Renderer2, ElementRef, HostBinding } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
     selector: '[appDropdown]'
 })
 export class DropdownDirective {
-    //MAX ATTEMPT FOR CLOSING DROPDOWN WHEN USER CLICKS ANYWHERE ELSE
+    // MAX ATTEMPT FOR CLOSING DROPDOWN WHEN USER CLICKS ANYWHERE ELSE
     @HostBinding('class.open') isOpen = false;
     @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
         this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
     }
-    
-    constructor(private elRef: ElementRef) {}
 
-    //MAX ATTEMPT
+    constructor(private elRef: ElementRef) { }
+
+    // MAX ATTEMPT
     /* @HostBinding('class.open') isOpen = false;
 
     @HostListener('click') toggleOpen() {
         this.isOpen = !this.isOpen;
     } */
 
-    //BRANDON ATTEMPT
+    // BRANDON ATTEMPT
     /* constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 
     @HostListener('click') onClick(eventData: Event) {
